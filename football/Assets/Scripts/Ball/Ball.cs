@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Football.Ball
-{
-
-
     public class Ball : MonoBehaviour
     {
-
         private GameManager gameManager;
         private Rigidbody2D rb;
         private bool isSwiped;
-
         void Start()
         {
             rb = gameObject.GetComponent<Rigidbody2D>();
@@ -51,4 +45,3 @@ namespace Football.Ball
 
         }
     }
-}

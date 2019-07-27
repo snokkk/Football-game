@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace Football.UI
-{
     public class UIController : MonoBehaviour
     {
         [Header("Score text")]
@@ -63,4 +61,3 @@ namespace Football.UI
         }
     }
 
-}

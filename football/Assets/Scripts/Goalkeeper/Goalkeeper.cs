@@ -28,7 +28,7 @@ public class Goalkeeper : MonoBehaviour
             if (random == 1)
                 anim.speed = 2f;
             else anim.speed = 1f;
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(3f);
         }
         
     }

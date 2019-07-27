@@ -112,7 +112,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32348a2bcd0571946976aad620c4fd9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 0.2
+  force: 1.2
   isSwiped: 0
 --- !u!114 &5744523101240858711
 MonoBehaviour:

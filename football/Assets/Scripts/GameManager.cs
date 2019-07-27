@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Football.UI;
-
-namespace Football
-{
 
     public class GameManager : MonoBehaviour
     {
@@ -50,10 +46,10 @@ namespace Football
 
         private void Update()
         {
-                if (miss == 5)
-                EndGame(true);
+            if (miss == 5)
+                LoseEndGame(true);
             if (goal == 5)
-                EndGame(false);
+                LoseEndGame(false);
         }
 
 
@@ -65,9 +61,11 @@ namespace Football
                 UI.ShowTime();
                 yield return new WaitForSeconds(1f);
             }
-        }
+            LoseEndGame(true);
 
-        public void InitializeBall()
+    }
+
+    public void InitializeBall()
         {
             int randomSpawn = Random.Range(0, ballSpawnPoints.Length);
             Instantiate(ball, ballSpawnPoints[randomSpawn].transform);
@@ -95,15 +93,14 @@ namespace Football
             InitializeBall();
         }
 
-        public void EndGame(bool lose)
+        public void LoseEndGame(bool lose)
         {
             Time.timeScale = 0;
             UI.EndGameUI(lose);
             endGameUI.SetActive(true);
-
         }
 
     }
-}
+
 
 
