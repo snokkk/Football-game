@@ -20,10 +20,10 @@ using UnityEngine.UI;
 
         private bool isStarted = false;
 
-        #endregion
+    #endregion
 
         #region Public fields
-
+        public int globGoal, globMiss;
         public int goal;
         public int miss;
         public int roundTime = 60;
@@ -33,24 +33,24 @@ using UnityEngine.UI;
         void Awake()
         {
             UI = GameObject.Find("UIController").GetComponent<UIController>();
-            UI.UISetup();
             InitializeBall();
-            Time.timeScale = 1;
         }
 
         private void Start()
         {
+            UI.UISetup();
+            Time.timeScale = 0; 
             timeCoroutine = timeCounterCour();
             StartCoroutine(timeCoroutine);
         }
 
-        private void Update()
-        {
+         private void Update()
+         {
             if (miss == 5)
                 LoseEndGame(true);
             if (goal == 5)
                 LoseEndGame(false);
-        }
+         }
 
 
         private IEnumerator timeCounterCour()
@@ -65,7 +65,7 @@ using UnityEngine.UI;
 
     }
 
-    public void InitializeBall()
+        public void InitializeBall()
         {
             int randomSpawn = Random.Range(0, ballSpawnPoints.Length);
             Instantiate(ball, ballSpawnPoints[randomSpawn].transform);
@@ -75,7 +75,7 @@ using UnityEngine.UI;
         {
             if (goal < 5)
                 goal++;
-            int globGoal = PlayerPrefs.GetInt("globalGoal");
+            globGoal = PlayerPrefs.GetInt("globalGoal");
             globGoal++;
             PlayerPrefs.SetInt("globalGoal", globGoal);
             UI.UISetup();
@@ -86,7 +86,7 @@ using UnityEngine.UI;
         {
             if (miss < 5)
                 miss++;
-            int globMiss = PlayerPrefs.GetInt("globalMiss");
+            globMiss = PlayerPrefs.GetInt("globalMiss");
             globMiss++;
             PlayerPrefs.SetInt("globalMiss", globMiss);
             UI.UISetup();

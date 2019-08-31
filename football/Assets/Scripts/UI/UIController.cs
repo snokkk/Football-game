@@ -20,12 +20,17 @@ using UnityEngine.UI;
         private Text winLoseText;
         [SerializeField]
         private Text time;
+        [SerializeField]
+        private GameObject MainMenuUI;
+        [SerializeField]
+        private GameObject Stats;
 
         private GameManager gameManager;
 
         private void Awake()
         {
             gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+            StatsSetup();
             ShowTime();
         }
 
@@ -40,14 +45,19 @@ using UnityEngine.UI;
             missText.text = gameManager.miss + "/5";
         }
 
+        public void StatsSetup()
+        {
+        int globMiss = PlayerPrefs.GetInt("globalMiss");
+        int globGoal = PlayerPrefs.GetInt("globalGoal");
+        globalMiss.text = "" + globMiss;
+        globalGoal.text = "" + globGoal;
+        }
+
         public void EndGameUI(bool lose)
         {
-            int globMiss = PlayerPrefs.GetInt("globalMiss");
-            int globGoal = PlayerPrefs.GetInt("globalGoal");
+            StatsSetup();
 
-
-            globalMiss.text = "" + globMiss;
-            globalGoal.text = "" + globGoal;
+            Stats.SetActive(true);
 
             if (lose)
                 winLoseText.text = "You lose :(";
@@ -59,5 +69,13 @@ using UnityEngine.UI;
         {
             Application.LoadLevel(Application.loadedLevel);
         }
+
+         public void OnClickStart()
+         {
+            Time.timeScale = 1;
+            MainMenuUI.SetActive(false);
+            Stats.SetActive(false);
+    }
+
     }
 
